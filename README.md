@@ -1,1 +1,45 @@
-# really-rich-results
+# Really Rich Results - JSON-LD Structured Data (Google Rich Results) for WordPress
+
+## Building
+
+### Requirements
+- Yarn
+- Composer
+
+### Compiling for Development
+
+1. Clone the plugin.
+2. Run a `composer install`.
+3. Run `yarn install`.
+4. Run `yard start` to build the development bundle.
+4. Activate.
+
+## Extending
+
+TODO
+
+## How it works
+
+Quick rundown of how it works:
+
+1. Main functionality exists inside `src/Main.php`.
+2. First it hooks into the `wp` action to check for the primary content.
+3. Next, it hooks into the `the_content` hook to collect any posts being displayed. Those collected posts are detected, used to create a data source, and added to `Main::$found_posts`.
+4. Data sources are then used to create schema objects. They can be either auto-detected or defined manually by passing a schema object and the data source through `Schema::build_schema()`
+5. Finally, they're output through a `wp_footer` action. By this time, we should have all the posts we need to build any schema.
+
+General locations for things are as follows:
+
+* `really-rich-results.php`: Just loads up the autoloader and inits `src/Main.php`
+* `src/Common.php`: Other stuff. Mostly helper functions.
+* `src/Main.php`: Main functionality. Basically a controller. Collects queried posts, hands them off to wherever they need to go, stores objects, and outputs.
+* `src/Admin/`: Houses any WordPress admin tasks, such as settings pages.
+* `src/Schema/`: Transforms data sources into structured data schema objects. Files are named according to the schema type and inherit their parent schema. Follows the schema.org spec.
+* `src/Data_Sources/`: Various data sources. Helps translate schema properties from different types of content.
+* `src/Content_Types/`: Handles various content types that might need to handle a data source or group of data sources differently than normal. For example, archive pages that contain an ItemList of Article schema objects inside another main CollectionPage schema object.
+* `src/Factories`: Factories for generating schema and content type objects.
+* `src/Routes`: Contains REST API routes.
+
+## Contributing
+
+Pull requests or issue reports are always welcome. Please be sure to run the PHPCS ruleset at `phpcs.xml` before submitting a pull request.

@@ -1,0 +1,24 @@
+@import '~@wordpress/base-styles/colors';
+
+// Import variables.
+@import "variables";
+
+.same-as-field {
+    width: 100%;
+}
+
+.same-as-remove svg {
+    fill: $trash;
+}
+
+.same-as-add {
+    justify-content: flex-end;
+}
+
+.org-city, .org-state, .org-postal-code {
+    width: 32%
+}
+
+.save-changes {
+    margin-top: 1em;
+}

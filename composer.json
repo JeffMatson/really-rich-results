@@ -1,0 +1,25 @@
+{
+  "name": "pagely/really-rich-results",
+  "description": "WordPress plugin to handle JSON-LD schema markup",
+  "type": "wordpress-plugin",
+  "license": "GPL3",
+  "authors": [
+    {
+      "name": "Jeff Matson",
+      "email": "jeff.matson@pagely.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Really_Rich_Results\\": "src"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*",
+    "wp-coding-standards/wpcs": "^2.3",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+  }
+}

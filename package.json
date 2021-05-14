@@ -1,0 +1,48 @@
+{
+  "name": "@pagely/really-rich-results",
+  "version": "0.1.0",
+  "description": "Really Rich Results",
+  "main": "assets/src/js/index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses",
+    "format:js": "wp-scripts format-js",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "lint:md:docs": "wp-scripts lint-md-docs",
+    "lint:md:js": "wp-scripts lint-md-js",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "start": "wp-scripts start",
+    "test:e2e": "wp-scripts test-e2e",
+    "test:unit": "wp-scripts test-unit-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pagely/really-rich-results.git"
+  },
+  "author": {
+    "name": "Pagely, Inc.",
+    "email": "rrr@pagely.com",
+    "url": "https://pagely.com"
+  },
+  "contributors": [{
+    "name": "Jeff Matson",
+    "url": "https://jeffmatson.net"
+  }],
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/pagely/really-rich-results/issues"
+  },
+  "homepage": "https://github.com/pagely/really-rich-results#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "^14.1.0"
+  },
+  "dependencies": {
+    "@wordpress/plugins": "^2.25.1",
+    "immer": "^9.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
