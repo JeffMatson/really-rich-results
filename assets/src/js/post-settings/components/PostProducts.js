@@ -7,7 +7,6 @@ import { PostProduct } from './PostProduct';
 
 function addProduct (props) {
     props.setMetaFieldValue([...props.allProducts, {}]);
-    
 }
 
 function deleteProduct (index, props) {
@@ -17,9 +16,6 @@ function deleteProduct (index, props) {
 }
 
 function updateProduct (products, toUpdate, index) {
-    console.log(products);
-    console.log(toUpdate);
-    console.log(index);
     var newProduct = { ...products[index], ...toUpdate };
     var newProducts = [...products, ...newProduct];
     products.setMetaValue(newProducts);
