@@ -10,7 +10,7 @@ RRR makes structured data for WordPress really rich, and really easy.
 
 ## Building
 
-The instructions below are for building from the GitHub repository. If you'd like to try out a pre-packaged version, see the releases.
+The instructions below are for building from the GitHub repository. If you'd like to try out a pre-packaged version, see the [releases](https://github.com/pagely/really-rich-results/releases).
 
 ### Requirements
 - Yarn
