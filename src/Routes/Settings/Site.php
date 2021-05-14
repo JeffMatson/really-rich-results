@@ -67,30 +67,7 @@ class Site {
 					$result[ $option_key ] = update_option( 'really_rich_results_org_duns', $option_value );
 					break;
 				case 'address':
-					$result[ $option_key ] = array();
-					// TODO: Probably break this out.
-					foreach ( $option_value as $address_prop => $address_val ) {
-						switch ( $address_prop ) {
-							case 'street':
-								$result[ $option_key ][ $address_prop ] = update_option( 'really_rich_results_org_street', $address_val );
-								break;
-							case 'poBox':
-								$result[ $option_key ][ $address_prop ] = update_option( 'really_rich_results_org_po_box', $address_val );
-								break;
-							case 'city':
-								$result[ $option_key ][ $address_prop ] = update_option( 'really_rich_results_org_locality', $address_val );
-								break;
-							case 'state':
-								$result[ $option_key ][ $address_prop ] = update_option( 'really_rich_results_org_region', $address_val );
-								break;
-							case 'postalCode':
-								$result[ $option_key ][ $address_prop ] = update_option( 'really_rich_results_org_postal_code', $address_val );
-								break;
-							case 'country':
-								$result[ $option_key ][ $address_prop ] = update_option( 'really_rich_results_org_country', $address_val );
-								break;
-						}
-					}
+					$result[ $option_key ] = $this->update_address_props( $option_value );
 					break;
 				case 'sameAs':
 					$result[ $option_key ] = update_option( 'really_rich_results_org_same_as', $option_value );
@@ -99,6 +76,42 @@ class Site {
 		}
 
 		return rest_ensure_response( $result );
+	}
+
+	/**
+	 * Updates address props.
+	 *
+	 * @param string[] $address_props Array of address props to update.
+	 *
+	 * @return bool[]
+	 */
+	private function update_address_props( $address_props ) {
+		$result = array();
+
+		foreach ( $address_props as $address_prop => $address_val ) {
+			switch ( $address_prop ) {
+				case 'street':
+					$result[ $address_prop ] = update_option( 'really_rich_results_org_street', $address_val );
+					break;
+				case 'poBox':
+					$result[ $address_prop ] = update_option( 'really_rich_results_org_po_box', $address_val );
+					break;
+				case 'city':
+					$result[ $address_prop ] = update_option( 'really_rich_results_org_locality', $address_val );
+					break;
+				case 'state':
+					$result[ $address_prop ] = update_option( 'really_rich_results_org_region', $address_val );
+					break;
+				case 'postalCode':
+					$result[ $address_prop ] = update_option( 'really_rich_results_org_postal_code', $address_val );
+					break;
+				case 'country':
+					$result[ $address_prop ] = update_option( 'really_rich_results_org_country', $address_val );
+					break;
+			}
+		}
+
+		return $result;
 	}
 
 	/**
