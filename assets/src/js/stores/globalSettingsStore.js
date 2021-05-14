@@ -45,6 +45,8 @@ const actions = {
 
     /**
      * Gets all post type settings.
+     * 
+     * @returns {Object}
      */
     getPostTypeSettings() {
         return {
