@@ -151,10 +151,16 @@ class Site extends Abstract_Data_Source {
 	 * @return Generic
 	 */
 	protected function get_potential_action() {
-		$search_action = new Generic( 'SearchAction' );
-		$search_action->set_schema_property( 'url', $this->get_url() );
-		$search_action->set_schema_property( 'target', $this->get_search_url() . '{search_term_string}' );
-		$search_action->set_schema_property( 'query-input', 'required name=search_term_string' );
+		$search_action       = new Generic( 'SearchAction' );
+		$search_action_props = array(
+			'url'         => $this->get_url(),
+			'target'      => $this->get_search_url() . '{search_term_string}',
+			'query-input' => 'required name=search_term_string',
+		);
+
+		foreach ( $search_action_props as $name => $value ) {
+			$search_action->set_schema_property( $name, $value );
+		}
 
 		return $search_action;
 	}
@@ -162,29 +168,47 @@ class Site extends Abstract_Data_Source {
 	/**
 	 * Gets the site's Organization schema prop.
 	 *
-	 * TODO: Prolly map and loop this.
-	 *
 	 * @return Generic
 	 */
 	protected function get_organization() {
-		$organization = new Generic( 'Organization' );
+		$organization       = new Generic( 'Organization' );
+		$organization_props = array(
+			'name'      => get_option( 'really_rich_results_org_name', get_bloginfo( 'name' ) ),
+			'legalName' => get_option( 'really_rich_results_org_legal_name', get_bloginfo( 'name' ) ),
+			'url'       => get_option( 'really_rich_results_org_url', get_site_url() ),
+			'duns'      => get_option( 'really_rich_results_org_duns', false ),
+			'logo'      => get_option( 'really_rich_results_org_logo', $this->get_image() ),
+			'address'   => $this->get_organization_address(),
+		);
 
-		$organization->set_schema_property( 'name', get_option( 'really_rich_results_org_name', get_bloginfo( 'name' ) ) );
-		$organization->set_schema_property( 'legalName', get_option( 'really_rich_results_org_legal_name', get_bloginfo( 'name' ) ) );
-		$organization->set_schema_property( 'url', get_option( 'really_rich_results_org_url', get_site_url() ) );
-		$organization->set_schema_property( 'duns', get_option( 'really_rich_results_org_duns', false ) );
-		$organization->set_schema_property( 'logo', get_option( 'really_rich_results_org_logo', $this->get_image() ) );
-
-		$organization_address = new Generic( 'Address' );
-		$organization_address->set_schema_property( 'addressCountry', get_option( 'really_rich_results_org_country' ) );
-		$organization_address->set_schema_property( 'addressLocality', get_option( 'really_rich_results_org_locality' ) );
-		$organization_address->set_schema_property( 'addressRegion', get_option( 'really_rich_results_org_region' ) );
-		$organization_address->set_schema_property( 'postOfficeBoxNumber', get_option( 'really_rich_results_org_po_box' ) );
-		$organization_address->set_schema_property( 'postalCode', get_option( 'really_rich_results_org_postal_code' ) );
-		$organization_address->set_schema_property( 'streetAddress', get_option( 'really_rich_results_org_street' ) );
-
-		$organization->set_schema_property( 'address', $organization_address );
+		foreach ( $organization_props as $name => $value ) {
+			$organization->set_schema_property( $name, $value );
+		}
 
 		return $organization;
+	}
+
+	/**
+	 * Gets the organization's address prop.
+	 *
+	 * @return Generic
+	 */
+	protected function get_organization_address() {
+		$organization_address = new Generic( 'Address' );
+
+		$organization_address_props = array(
+			'addressCountry'      => get_option( 'really_rich_results_org_country' ),
+			'addressLocality'     => get_option( 'really_rich_results_org_locality' ),
+			'addressRegion'       => get_option( 'really_rich_results_org_region' ),
+			'postOfficeBoxNumber' => get_option( 'really_rich_results_org_po_box' ),
+			'postalCode'          => get_option( 'really_rich_results_org_postal_code' ),
+			'streetAddress'       => get_option( 'really_rich_results_org_street' ),
+		);
+
+		foreach ( $organization_address_props as $name => $value ) {
+			$organization_address->set_schema_property( $name, $value );
+		}
+
+		return $organization_address;
 	}
 }
