@@ -364,13 +364,17 @@ class WP_Post extends Abstract_Data_Source {
 	 * @return string
 	 */
 	public function get_schema_type() {
-		if ( ! empty( $this->get_post_setting_schema_type() ) ) {
-			return $this->get_post_setting_schema_type();
-		} elseif ( ! empty( $this->get_post_type_setting_schema_type() ) ) {
-			return $this->get_post_type_setting_schema_type();
-		} else {
-			return $this->get_post_default_schema_type();
+		$post_schema_type = $this->get_post_setting_schema_type();
+		if ( ! empty( $post_schema_type ) ) {
+			return $post_schema_type;
 		}
+
+		$post_type_schema_type = $this->get_post_type_setting_schema_type();
+		if ( ! empty( $post_type_schema_type ) ) {
+			return $post_type_schema_type;
+		}
+
+		return $this->get_post_default_schema_type();
 	}
 
 	/**
@@ -488,11 +492,11 @@ class WP_Post extends Abstract_Data_Source {
 	/**
 	 * Gets products attached to post meta.
 	 *
-	 * @return array Array of product data sources.
+	 * @return Really_Rich_Results_Product[] Array of product data sources.
 	 */
 	public function get_products() {
 		$products     = array();
-		$product_meta = get_post_meta( $this->data->ID, 'really_rich_results_post_product_schema', true );
+		$product_meta = get_post_meta( $this->data->ID, 'really_rich_results_product', false );
 
 		if ( ! empty( $product_meta ) ) {
 
