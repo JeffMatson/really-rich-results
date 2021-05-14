@@ -243,12 +243,12 @@ class Main {
 	 * filter, that template will be used. Otherwise, a standard content type
 	 * template will be used.
 	 *
-	 * @param object      $data_source  The data source to process.
-	 * @param object|null $content_type The detected primary content type.
+	 * @param Data_Sources\Abstract_Data_Source        $data_source  The data source to process.
+	 * @param Content_Types\Abstract_Content_Type|null $content_type The detected primary content type.
 	 *
 	 * @return object A built schema object.
 	 */
-	public function build_content_type( $data_source, $content_type = null ) {
+	public function build_content_type( Data_Sources\Abstract_Data_Source $data_source, $content_type = null ) {
 		$custom_builder = apply_filters( 'really_rich_results_build_content_type', null, $data_source, $content_type, $this );
 
 		// Check if a custom builder was passed through the really_rich_results_build_content_type filter.
@@ -265,8 +265,8 @@ class Main {
 	 *
 	 * TODO: This feels dumb. Maybe refactor.
 	 *
-	 * @param object $data_source  The data source object.
-	 * @param string $content_type The content type.
+	 * @param Data_Sources\Abstract_Data_Source $data_source  The data source object.
+	 * @param string                            $content_type The content type.
 	 *
 	 * @return object|null
 	 */
@@ -371,8 +371,8 @@ class Main {
 	/**
 	 * Builds a schema object for the Archive content type.
 	 *
-	 * @param object $primary_data_source The primary data source.
-	 * @param array  $archive_posts       Array of data sources to use as child elements.
+	 * @param Data_Sources\Abstract_Data_Source $primary_data_source The primary data source.
+	 * @param Data_Sources\Abstract_Data_Source $archive_posts       Array of data sources to use as child elements.
 	 *
 	 * @return Content_Types\Archive
 	 */
@@ -400,10 +400,6 @@ class Main {
 
 		$this->build_schema_objects();
 
-		/**
-		 * Filter schema objects.
-		 *
-		 * @var Schema\Thing[] $schema_objects Stored schema objects. */
 		$schema_objects = apply_filters( 'really_rich_results_pre_output_schema_json', $this->schema_objects );
 
 		foreach ( $schema_objects as $schema_object ) {

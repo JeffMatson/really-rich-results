@@ -45,7 +45,7 @@ class Generic extends Abstract_Data_Source {
 	 *
 	 * @return void
 	 */
-	public function set_type( $type ) {
+	public function set_type( string $type ) {
 		$this->type = $type;
 	}
 

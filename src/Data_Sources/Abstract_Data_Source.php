@@ -83,8 +83,8 @@ abstract class Abstract_Data_Source {
 	 * All data sources should use this for mapping schema properties. If the
 	 * property is unknown, this should return null.
 	 *
-	 * @see \Really_Rich_Results\Data_Sources\Generic
-	 * @see \Really_Rich_Results\Data_Sources\WP_Post
+	 * @see Generic
+	 * @see WP_Post
 	 *
 	 * @api
 	 *
@@ -92,7 +92,7 @@ abstract class Abstract_Data_Source {
 	 *
 	 * @return mixed
 	 */
-	abstract public function get_schema_property( $property );
+	abstract public function get_schema_property( string $property );
 
 	/**
 	 * Sets the context in which the data source is being currently used.
@@ -138,7 +138,7 @@ abstract class Abstract_Data_Source {
 	 *
 	 * @return void
 	 */
-	protected function store_schema_property( $property, $value, $overwrite = false ) {
+	protected function store_schema_property( string $property, $value, $overwrite = false ) {
 		if ( ! $this->has_stored_schema_property( $property ) || $overwrite === true ) {
 			$this->schema_properties[ $property ] = $value;
 		}
@@ -151,7 +151,7 @@ abstract class Abstract_Data_Source {
 	 *
 	 * @return mixed
 	 */
-	protected function get_stored_schema_property( $property ) {
+	protected function get_stored_schema_property( string $property ) {
 		if ( $this->has_stored_schema_property( $property ) ) {
 			return $this->schema_properties[ $property ];
 		}
@@ -170,14 +170,14 @@ abstract class Abstract_Data_Source {
 	 *
 	 * @return bool
 	 */
-	protected function has_stored_schema_property( $property ) {
+	protected function has_stored_schema_property( string $property ) {
 		return array_key_exists( $property, $this->schema_properties );
 	}
 
 	/**
 	 * Gets the site config from \Really_Rich_Results\Main for use by other data sources.
 	 *
-	 * @return \Really_Rich_Results\Data_Sources\Site
+	 * @return Site
 	 */
 	protected function get_site_config() {
 		if ( $this->site_config === null ) {
@@ -203,7 +203,7 @@ abstract class Abstract_Data_Source {
 	 *
 	 * @return void
 	 */
-	public function set_processed_status( $is_processed ) {
+	public function set_processed_status( bool $is_processed ) {
 		$this->processed_status = $is_processed;
 	}
 
