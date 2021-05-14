@@ -33,6 +33,9 @@ const applyWithDispatch = withDispatch( (dispatch) => ({
     },
     updateSameAs(val, index) {
         dispatch(globalSettingsStore.storeName).updateSameAs(val, index);
+    },
+    deleteSameAs( index ) {
+        dispatch(globalSettingsStore.storeName).deleteSameAs(index);
     }
 }));
 
@@ -87,7 +90,7 @@ const GeneralSettingsTab = (props) => {
                                     value={sameAs}
                                     onChange={(val) => props.updateSameAs(val, index)}
                                 />
-                                <Button className="same-as-remove" icon={trash} />
+                                <Button className="same-as-remove" icon={trash} onClick={ () => props.deleteSameAs(index) } />
                             </PanelRow>
                         )}
                         <PanelRow className="same-as-add">

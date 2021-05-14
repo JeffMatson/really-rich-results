@@ -114,6 +114,13 @@ const actions = {
             index
         }
     },
+
+    deleteSameAs(index) {
+        return {
+            type: 'DELETE_GLOBAL_ORG_SAME_AS',
+            index
+        }
+    }
 };
 
 /**
@@ -263,6 +270,11 @@ const store = createReduxStore(storeName, {
                         draft.organization.sameAs[action.index] = action.val
                     })
                 }
+            case 'DELETE_GLOBAL_ORG_SAME_AS':
+                return produce(state, draft => {
+                    // TODO: dis be ugly
+                    draft.organization.sameAs = [ ...draft.organization.sameAs.slice(0, action.index), ...draft.organization.sameAs.slice(action.index+1, draft.organization.sameAs.length ) ]
+                })
             case 'SET_POST_TYPE_SETTINGS':
                 return {
                     ...state,
