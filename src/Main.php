@@ -59,7 +59,7 @@ class Main {
 	/**
 	 * Stores built schema objects.
 	 *
-	 * @var array
+	 * @var Schema\Thing[]
 	 */
 	public $schema_objects = array();
 
@@ -400,10 +400,16 @@ class Main {
 
 		$this->build_schema_objects();
 
+		/**
+		 * Filter schema objects.
+		 *
+		 * @var Schema\Thing[] $schema_objects Stored schema objects. */
 		$schema_objects = apply_filters( 'really_rich_results_pre_output_schema_json', $this->schema_objects );
 
 		foreach ( $schema_objects as $schema_object ) {
-			echo '<script type="application/ld+json">' . $schema_object->get_json() . '</script>';
+			if ( Types::is_schema_object( $schema_object ) && method_exists( $schema_object, 'get_schema' ) ) {
+				echo '<script type="application/ld+json">' . wp_json_encode( $schema_object->get_schema() ) . '</script>';
+			}
 		}
 
 		do_action( 'really_rich_results_add_schema_output' );
@@ -420,7 +426,7 @@ class Main {
 	 */
 	private function output_website_schema() {
 		$website = Factories\Schema::create( $this->get_site_config(), new Schema\WebSite() );
-		echo '<script type="application/ld+json">' . $website->get_json() . '</script>';
+		echo '<script type="application/ld+json">' . wp_json_encode( $website->get_schema() ) . '</script>';
 	}
 
 }
