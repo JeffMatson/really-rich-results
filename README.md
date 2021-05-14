@@ -1,6 +1,16 @@
 # Really Rich Results - JSON-LD Structured Data (Google Rich Results) for WordPress
 
+Search engines are putting more weight on structured data than ever before. By leveraging JSON-LD schema markup as part of your SEO strategy, a whole world of opportunities arise within Google's Rich Results.
+
+Really Rich Results works with your WordPress site's existing content to quickly and accurately generate JSON-LD schema markup with minimal effort required. In addition to generating markup for the primary content on the page, Really Rich Results also detects any additional child elements that are being displayed, such as related content, products, page context, and more.
+
+In addition to a large library of standard patterns that are automatically recognized, Really Rich Results offers limitless customization to fit your unique needs. Whether you're customizing your structured data from within the GUI or by providing your own custom code, Really Rich Results has you covered.
+
+RRR makes structured data for WordPress really rich, and really easy.
+
 ## Building
+
+The instructions below are for building from the GitHub repository. If you'd like to try out a pre-packaged version, see the releases.
 
 ### Requirements
 - Yarn
