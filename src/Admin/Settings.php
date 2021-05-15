@@ -56,14 +56,13 @@ class Settings {
 	 * @return void
 	 */
 	public function admin_menu() {
-		add_menu_page(
+		add_submenu_page(
+			'tools.php',
 			__( 'Really Rich Results', 'really-rich-results' ),
-			'Really Rich Results',
+			'R&sup3; Schema',
 			'manage_options',
 			'really_rich_results',
-			array( $this, 'render_plugin_settings_page' ),
-			'none',
-			76,
+			array( $this, 'render_plugin_settings_page' )
 		);
 	}
 
@@ -78,7 +77,7 @@ class Settings {
 	 */
 	public function admin_enqueue_scripts( $hook ) {
 		switch ( $hook ) {
-			case 'toplevel_page_really_rich_results':
+			case 'tools_page_really_rich_results':
 				$this->enqueue_plugin_settings_scripts();
 				break;
 			case 'post.php':
