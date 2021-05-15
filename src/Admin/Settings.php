@@ -69,8 +69,6 @@ class Settings {
 	/**
 	 * Enqueues scripts required for settings pages.
 	 *
-	 * TODO: Break this up.
-	 *
 	 * @param string $hook The path returned by the hook.
 	 *
 	 * @return void
@@ -96,7 +94,13 @@ class Settings {
 		$plugin_settings_css = $this->get_asset( 'plugin-settings', 'css' );
 
 		// Register plugin settings scripts.
-		wp_register_script( 'really_rich_results_plugin_settings', $plugin_settings_js['url'], $plugin_settings_js['dependencies'], $plugin_settings_js['version'], true );
+		wp_register_script(
+			'really_rich_results_plugin_settings',
+			$plugin_settings_js['url'],
+			$plugin_settings_js['dependencies'],
+			$plugin_settings_js['version'],
+			true
+		);
 
 		// Enqueue plugin settings scripts and styles.
 		wp_enqueue_script( 'really_rich_results_plugin_settings' );
@@ -113,7 +117,13 @@ class Settings {
 		$post_settings_css = $this->get_asset( 'post-settings', 'css' );
 
 		// Register post settings scripts.
-		wp_register_script( 'really_rich_results_post_settings', $post_settings_js['url'], $post_settings_js['dependencies'], $post_settings_js['version'], true );
+		wp_register_script(
+			'really_rich_results_post_settings',
+			$post_settings_js['url'],
+			$post_settings_js['dependencies'],
+			$post_settings_js['version'],
+			true
+		);
 
 		// Enqueue post settings scripts and styles.
 		wp_enqueue_script( 'really_rich_results_post_settings' );
