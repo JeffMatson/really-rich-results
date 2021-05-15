@@ -12,7 +12,7 @@ use WP_Error;
 /**
  * Main Really Rich Results settings class.
  *
- * TODO: check method visibility
+ * @package Really_Rich_Results\Admin
  */
 class Settings {
 

@@ -33,35 +33,11 @@ class Schema {
 	}
 
 	/**
-	 * Gets the schema from a content type.
-	 *
-	 * @param object $type_obj The content type object.
-	 *
-	 * @return object
-	 */
-	public static function get_schema( $type_obj ) {
-		return $type_obj->get_schema();
-	}
-
-	/**
-	 * Builds a schema target and returns the schema.
-	 *
-	 * @param object      $source The data source.
-	 * @param object|null $target The schema target.
-	 *
-	 * @return object
-	 */
-	public static function build_and_get_schema( $source, $target = null ) {
-		$schema_type = self::build_schema( $source, $target );
-		return self::get_schema( $schema_type );
-	}
-
-	/**
 	 * Gets the schema target.
 	 *
-	 * @param object $source The data source.
+	 * @param Data_Sources\Abstract_Data_Source $source The data source.
 	 *
-	 * @return object
+	 * @return Schema\Thing
 	 */
 	public static function get_schema_target( $source ) {
 		$target_type = $source->get_schema_type();
