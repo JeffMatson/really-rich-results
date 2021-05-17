@@ -217,4 +217,14 @@ abstract class Abstract_Data_Source {
 		return null;
 	}
 
+	/**
+	 * Get products associated with the data source.
+	 * Defaults to an empty array unless overridden by a child class.
+	 *
+	 * @return array
+	 */
+	public function get_products() {
+		return array();
+	}
+
 }

@@ -138,26 +138,6 @@ class Main {
 	}
 
 	/**
-	 * Checks if an object is a valid content type.
-	 *
-	 * Valid content types are expected to be extensions of the Abstract_Content_Type class.
-	 * If any other class is passed to this, false will be returned.
-	 *
-	 * @param object $content_type The content type to check.
-	 *
-	 * @return bool
-	 */
-	private function is_valid_content_type( $content_type ) {
-		// If it's not an object, don't even bother.
-		if ( ! is_object( $content_type ) ) {
-			return false;
-		}
-
-		// Make sure it's extending the abstract content type.
-		return is_subclass_of( $content_type, '\\Really_Rich_Results\\Content_Types\\Abstract_Content_Type' );
-	}
-
-	/**
 	 * Checks if a data source is registered as the primary content type.
 	 *
 	 * @param object $data_source The data source object.
@@ -252,7 +232,7 @@ class Main {
 		$custom_builder = apply_filters( 'really_rich_results_build_content_type', null, $data_source, $content_type, $this );
 
 		// Check if a custom builder was passed through the really_rich_results_build_content_type filter.
-		if ( $this->is_valid_content_type( $custom_builder ) ) {
+		if ( Types::is_content_type( $custom_builder ) ) {
 			return $custom_builder;
 		}
 
@@ -290,20 +270,21 @@ class Main {
 	/**
 	 * Builds the primary schema object.
 	 *
-	 * @return object|null
+	 * @return Schema\Thing|null
 	 */
 	public function build_primary_schema_object() {
 		$primary_content_type = $this->primary_content_type;
 		$primary_content      = $this->primary_content;
 
+		// If we can't detect a primary content type, bail.
 		if ( empty( $primary_content ) ) {
 			return null;
 		}
 
 		$content_type_builder = $this->build_content_type( $primary_content, $primary_content_type );
-
 		$primary_content->set_processed_status( true );
 
+		// If we don't know what to do with the content type, bail.
 		if ( empty( $content_type_builder ) ) {
 			return null;
 		}
@@ -333,7 +314,7 @@ class Main {
 	/**
 	 * Builds a schema object for the Single content type.
 	 *
-	 * @param object $data_source The data source to build the content type from.
+	 * @param Data_Sources\Abstract_Data_Source $data_source The data source to build the content type from.
 	 *
 	 * @return Content_Types\Single
 	 */

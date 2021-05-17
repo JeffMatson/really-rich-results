@@ -15,12 +15,13 @@ class Schema {
 	/**
 	 * Builds a schema from a source object.
 	 *
-	 * @param object      $source The data source object to build from.
-	 * @param object|null $target The schema target. If not set, the target will be determined using self::get_schema_target().
+	 * @param Data_Sources\Abstract_Data_Source $source The data source object to build from.
+	 * @param Schema\Thing|null                 $target The schema target.
+	 *                                                  If not set, the target will be determined using self::get_schema_target().
 	 *
-	 * @return object
+	 * @return Schema\Thing
 	 */
-	public static function build_schema( $source, $target = null ) {
+	public static function build_schema( Data_Sources\Abstract_Data_Source $source, $target = null ) {
 		$target = apply_filters( 'really_rich_results_build_schema_target', $target, $source );
 
 		if ( ! self::is_valid_schema_target( $target ) ) {

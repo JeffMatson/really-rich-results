@@ -15,7 +15,7 @@ class Common {
 	/**
 	 * Checks if an object is a WP_Post object.
 	 *
-	 * @param object $object The object to check.
+	 * @param \WP_Post $object The object to check.
 	 *
 	 * @return boolean
 	 */
@@ -26,7 +26,7 @@ class Common {
 	/**
 	 * Checks if an object is a WP_User object.
 	 *
-	 * @param object $object The object to check.
+	 * @param \WP_User $object The object to check.
 	 *
 	 * @return boolean
 	 */
@@ -37,7 +37,7 @@ class Common {
 	/**
 	 * Checks if the object is a WP_Term object.
 	 *
-	 * @param object $object The object to check.
+	 * @param \WP_Term $object The object to check.
 	 *
 	 * @return boolean
 	 */
@@ -48,7 +48,7 @@ class Common {
 	/**
 	 * Checks if the object is a WP_Comment object.
 	 *
-	 * @param object $object The object to check.
+	 * @param \WP_Comment $object The object to check.
 	 *
 	 * @return boolean
 	 */
