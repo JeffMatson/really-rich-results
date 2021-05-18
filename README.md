@@ -21,7 +21,7 @@ The instructions below are for building from the GitHub repository. If you'd lik
 1. Clone the plugin.
 2. Run a `composer install`.
 3. Run `yarn install`.
-4. Run `yard start` to build the development bundle.
+4. Run `yarn start` to build the development bundle.
 4. Activate.
 
 ## Extending
