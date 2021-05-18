@@ -5,6 +5,22 @@
   "main": "assets/src/js/index.js",
   "scripts": {
     "build": "wp-scripts build",
+    "build:dist": "wp-scripts build && npm run clean && npm run mkdirs && npm run copy:php && npm run copy:assets && npm run composer:build:dist && npm run copy:vendor && npm run build:zip",
+    "build:zip": "cd build/ && bestzip ../really-rich-results.zip *",
+    "mkdirs": "npm run mkdir:build:src && npm run mkdir:build:assets && mkdir:build:vendor",
+    "mkdir:build:src": "mkdir -p build/src && mkdir -p build/assets/dist && mkdir -p build/vendor",
+    "mkdir:build:assets": "mkdir -p build/assets/dist",
+    "mkdir:build:vendor": "mkdir -p build/vendor",
+    "copy:php": "cp -r src/* build/src && cp really-rich-results.php build/really-rich-results.php",
+    "copy:assets": "cp -r assets/dist/* build/assets/dist",
+    "copy:vendor": "cp -r vendor/* build/vendor",
+    "clean": "rimraf ./build/**/* && npm run clean:vendor && npm run clean:zip",
+    "clean:vendor": "rimraf ./vendor",
+    "clean:zip": "rimraf ./really-rich-results.zip",
+    "composer:build:dist": "npm run composer:clean && npm run composer:install:dist && npm run composer:dump-autoload:dist",
+    "composer:clean": "rimraf ./vendor",
+    "composer:install:dist": "composer install --no-dev",
+    "composer:dump-autoload:dist": "composer dump-autoload -o --no-dev",
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses",
     "format:js": "wp-scripts format-js",
@@ -27,17 +43,21 @@
     "email": "rrr@pagely.com",
     "url": "https://pagely.com"
   },
-  "contributors": [{
-    "name": "Jeff Matson",
-    "url": "https://jeffmatson.net"
-  }],
+  "contributors": [
+    {
+      "name": "Jeff Matson",
+      "url": "https://jeffmatson.net"
+    }
+  ],
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/pagely/really-rich-results/issues"
   },
   "homepage": "https://github.com/pagely/really-rich-results#readme",
   "devDependencies": {
-    "@wordpress/scripts": "^14.1.0"
+    "@wordpress/scripts": "^14.1.0",
+    "bestzip": "^2.2.0",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "@wordpress/plugins": "^2.25.1",
