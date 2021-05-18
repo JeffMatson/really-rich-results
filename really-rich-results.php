@@ -10,7 +10,7 @@
  * Plugin Name:       Really Rich Results
  * Plugin URI:        https://pagely.com
  * Description:       Adds JSON-LD output for structured data
- * Version:           0.1.0
+ * Version:           0.1.1
  * Author:            JeffMatson, joshuastrebel, Pagely
  * Author URI:        https://pagely.com
  * License:           GPL-3.0+
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'RRR_VERSION', '0.1' );
+define( 'RRR_VERSION', '0.1.1' );
 define( 'RRR_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'RRR_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 

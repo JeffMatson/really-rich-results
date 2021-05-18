@@ -24,6 +24,14 @@ The instructions below are for building from the GitHub repository. If you'd lik
 4. Run `yarn start` to build the development bundle.
 4. Activate.
 
+### Compiling for Release
+
+If you just want to download the latest release, see [releases](https://github.com/pagely/really-rich-results/releases).
+
+1. Clone the plugin.
+2. Run `yarn install`
+3. Run `yarn build:dist`
+
 ## Extending
 
 TODO
@@ -47,8 +55,10 @@ General locations for things are as follows:
 * `src/Schema/`: Transforms data sources into structured data schema objects. Files are named according to the schema type and inherit their parent schema. Follows the schema.org spec.
 * `src/Data_Sources/`: Various data sources. Helps translate schema properties from different types of content.
 * `src/Content_Types/`: Handles various content types that might need to handle a data source or group of data sources differently than normal. For example, archive pages that contain an ItemList of Article schema objects inside another main CollectionPage schema object.
-* `src/Factories`: Factories for generating schema and content type objects.
-* `src/Routes`: Contains REST API routes.
+* `src/Factories/`: Factories for generating schema and content type objects.
+* `src/Routes/`: Contains REST API routes.
+* `assets`: Various JS, SCSS, and image assets.
+* `tests`: Codeception tests.
 
 ## Contributing
 
