@@ -1,5 +1,7 @@
 # Really Rich Results - JSON-LD Structured Data (Google Rich Results) for WordPress
 
+![Really Rich Results Banner](assets/src/images/banner-1544x500.png)
+
 Search engines are putting more weight on structured data than ever before. By leveraging JSON-LD schema markup as part of your SEO strategy, a whole world of opportunities arise within Google's Rich Results.
 
 Really Rich Results works with your WordPress site's existing content to quickly and accurately generate JSON-LD schema markup with minimal effort required. In addition to generating markup for the primary content on the page, Really Rich Results also detects any additional child elements that are being displayed, such as related content, products, page context, and more.
