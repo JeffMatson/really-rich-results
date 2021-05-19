@@ -204,7 +204,7 @@ class Main {
 	/**
 	 * Collects all queried posts for later schema processing.
 	 *
-	 * @param WP_Post $post The post object found.
+	 * @param \WP_Post $post The post object found.
 	 *
 	 * @return void
 	 */
