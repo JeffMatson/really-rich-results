@@ -49,4 +49,22 @@ class Types {
 		// Make sure it's extending the abstract content type.
 		return is_subclass_of( $content_type, '\\Really_Rich_Results\\Content_Types\\Abstract_Content_Type' );
 	}
+
+	/**
+	 * Checks if an object is a valid data source object.
+	 * Data sources must extend Really_Rich_Results\Data_Sources\Abstract_Data_Source
+	 *
+	 * @param Data_Sources\Abstract_Data_Source $data_source The data source to check.
+	 *
+	 * @return bool
+	 */
+	public static function is_data_source( $data_source ) {
+		// If it's not an object, don't even bother.
+		if ( ! is_object( $data_source ) ) {
+			return false;
+		}
+
+		// Make sure it's extending the abstract data source.
+		return is_subclass_of( $data_source, '\\Really_Rich_Results\\Data_Sources\\Abstract_Data_Source' );
+	}
 }
