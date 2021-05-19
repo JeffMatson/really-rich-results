@@ -28,6 +28,10 @@ define( 'RRR_VERSION', '0.1.1' );
 define( 'RRR_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
 define( 'RRR_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
+if ( ! file_exists( plugin_dir_path( __FILE__ ) . 'vendor/autoload.php' ) ) {
+	throw new WP_Error( 'incomplete_build', __( 'It looks like you are trying to load a development version of Really Rich Results without building. Use a release version or build using Composer first.', 'really-rich-results' ) );
+}
+
 // Register the autoloader.
 require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 
