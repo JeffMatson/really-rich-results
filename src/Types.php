@@ -28,8 +28,17 @@ class Types {
 			return false;
 		}
 
-		// Make sure it's extending the abstract content type.
-		return is_subclass_of( $schema_object, '\\Really_Rich_Results\\Schema\\Thing' );
+		// Most likely to be a subclass, so check that first.
+		if ( is_subclass_of( $schema_object, '\\Really_Rich_Results\\Schema\\Thing' ) ) {
+			return true;
+		}
+
+		// Check if it's the base Thing class.
+		if ( get_class( $schema_object ) === 'Really_Rich_Results\Schema\Thing' ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
