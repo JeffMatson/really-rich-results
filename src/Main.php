@@ -120,7 +120,7 @@ class Main {
 	 * @return Data_Sources\Site
 	 */
 	public function get_site_config() {
-		if ( $this->site_config === null ) {
+		if ( Types::is_data_source( $this->site_config ) ) {
 			$this->site_config = new Data_Sources\Site();
 		}
 
