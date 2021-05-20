@@ -73,7 +73,10 @@ class Post_Types {
 	 * @return array
 	 */
 	private function get_post_type_defaults( $post_type ) {
-		$default_schema_type = $this->detect_default_schema_type( $post_type );
+		$default_schema_type    = $this->detect_default_schema_type( $post_type );
+		$supported_schema_types = $this->detect_supported_schema_types( $post_type );
+		// TODO: Probably change this hook later.
+		$supported_schema_types = apply_filters( 'really_rich_results_post_type_supports_schema_type', $supported_schema_types, $post_type );
 
 		$defaults = array(
 			'name'        => $post_type->name,
@@ -81,6 +84,9 @@ class Post_Types {
 			'enabled'     => true,
 			'schema_type' => $default_schema_type,
 			'show_author' => true,
+			'supports'    => array(
+				'schema_type' => $supported_schema_types,
+			),
 		);
 
 		return apply_filters( 'really_rich_results_post_type_defaults', $defaults, $post_type );
@@ -97,8 +103,58 @@ class Post_Types {
 		switch ( $post_type->name ) {
 			case 'post':
 				return 'Article';
+			case 'attachment':
+				return 'ImageObject';
 			default:
 				return 'WebPage';
+		}
+	}
+
+	/**
+	 * Detects the recommended supported schema types.
+	 *
+	 * @param WP_Post_Type $post_type The post type.
+	 *
+	 * @return string[]
+	 */
+	private function detect_supported_schema_types( $post_type ) {
+		switch ( $post_type->name ) {
+			case 'post':
+				return array(
+					'Article',
+					'CreativeWork',
+					'Review',
+					'Thing',
+					'WebPage',
+				);
+			case 'page':
+				return array(
+					'Article',
+					'CreativeWork',
+					'Review',
+					'Thing',
+					'WebPage',
+				);
+			case 'attachment':
+				return array(
+					'CreativeWork',
+					'ImageObject',
+					'MediaObject',
+					'Thing',
+				);
+			default:
+				return array(
+					'Article',
+					'CreativeWork',
+					'ImageObject',
+					'MediaObject',
+					'Organization',
+					'Person',
+					'Product',
+					'Review',
+					'Thing',
+					'WebPage',
+				);
 		}
 	}
 

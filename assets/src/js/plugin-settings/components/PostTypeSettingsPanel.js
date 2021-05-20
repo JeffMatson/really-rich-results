@@ -30,7 +30,8 @@ const applyWithDispatch = withDispatch( (dispatch, ownProps) => ({
  * @returns {Object}
  */
 const PostTypeSettingsPanel = (props) => {
-    const { label, enabled, schema_type, show_author } = props.postTypeSettings;
+    const { label, enabled, schema_type, show_author, supports } = props.postTypeSettings;
+    const supportedSchemaTypes = supports.schema_type;
 
     const saveSettings = (postTypeSettings) => {
         apiFetch({
@@ -61,10 +62,7 @@ const PostTypeSettingsPanel = (props) => {
                         <SelectControl
                             label='Schema Type'
                             value={schema_type}
-                            options={[
-                                { label: 'WebPage', value: 'WebPage' },
-                                { label: 'Article', value: 'Article' }
-                            ]}
+                            options={supportedSchemaTypes.map( (schemaType) => ( { value: schemaType, label: schemaType } ) ) }
                             onChange={(val) =>
                                 props.setPostTypeSetting({ schema_type: val })
                             }
