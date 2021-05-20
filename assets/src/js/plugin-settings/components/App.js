@@ -23,18 +23,17 @@ export const App = () => {
         <div className="wrap">
             <h1>Really Rich Results Settings</h1>
             <TabPanel tabs={settingsTabs}>
-            { (tab) => {
-                switch(tab.name) {
-                    case 'general':
-                        return <GeneralSettingsTab />
-                    case 'post-types':
-                        return <PostTypeSettingsTab />
-                    default:
-                        return <p>Something broke.</p>
-                }
-            }}
-        </TabPanel>
-            
+                { (tab) => {
+                    switch(tab.name) {
+                        case 'general':
+                            return <GeneralSettingsTab />
+                        case 'post-types':
+                            return <PostTypeSettingsTab />
+                        default:
+                            return <p>Something broke.</p>
+                    }
+                }}
+            </TabPanel>
         </div>
         
     );
