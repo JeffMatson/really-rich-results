@@ -41,21 +41,16 @@ class Schema {
 		$target_type = $source->get_schema_type();
 
 		$target = apply_filters( 'really_rich_results_get_schema_target', null, $target_type );
+
 		if ( is_object( $target ) ) {
 			return $target;
 		}
 
-		switch ( $target_type ) {
-			case 'Article':
-				return new \Really_Rich_Results\Schema\Article();
-			case 'AboutPage':
-				return new \Really_Rich_Results\Schema\AboutPage();
-			case 'ContactPage':
-				return new \Really_Rich_Results\Schema\ContactPage();
-			case 'Review':
-				return new \Really_Rich_Results\Schema\Review();
-			default:
-				return new \Really_Rich_Results\Schema\WebPage();
+		if ( ! empty( $target_type ) && is_string( $target_type ) && class_exists( '\\Really_Rich_Results\\Schema\\' . $target_type ) ) {
+			$target_classname = '\\Really_Rich_Results\\Schema\\' . $target_type;
+			return new $target_classname();
 		}
+
+		return new \Really_Rich_Results\Schema\WebPage();
 	}
 }

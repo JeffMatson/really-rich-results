@@ -18,7 +18,7 @@ class Single extends Abstract_Content_Type {
 	/**
 	 * Holds the post data source.
 	 *
-	 * @var \Really_Rich_Results\Data_Sources\WP_Post|null $post Holds the single WP_Post data source.
+	 * @var WP_Post|null $post Holds the single WP_Post data source.
 	 */
 	private $post;
 
@@ -32,7 +32,7 @@ class Single extends Abstract_Content_Type {
 	/**
 	 * Sets the primary content to build the schema against.
 	 *
-	 * @param \Really_Rich_Results\Data_Sources\WP_Post $post The post data source.
+	 * @param WP_Post $post The post data source.
 	 *
 	 * @return void
 	 */
@@ -54,7 +54,7 @@ class Single extends Abstract_Content_Type {
 	/**
 	 * Builds a schema object based on the the post.
 	 *
-	 * @return object
+	 * @return \Really_Rich_Results\Schema\Thing
 	 */
 	public function build_schema() {
 		$primary_schema = Schema::create( $this->post );
