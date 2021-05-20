@@ -57,19 +57,49 @@ class Post_Types {
 	 * @return array
 	 */
 	private function get_post_type_settings( $post_type ) {
+		$default_settings = $this->get_post_type_defaults( $post_type );
+		$stored_settings  = get_option( 'really_rich_results_post_type_' . $post_type->name, array() );
+
+		$post_type_settings = wp_parse_args( $stored_settings, $default_settings );
+
+		return $post_type_settings;
+	}
+
+	/**
+	 * Gets a post type's default settings.
+	 *
+	 * @param WP_Post_Type $post_type The post type.
+	 *
+	 * @return array
+	 */
+	private function get_post_type_defaults( $post_type ) {
+		$default_schema_type = $this->detect_default_schema_type( $post_type );
+
 		$defaults = array(
 			'name'        => $post_type->name,
 			'label'       => $post_type->label,
 			'enabled'     => true,
-			'schema_type' => 'WebPage',
+			'schema_type' => $default_schema_type,
 			'show_author' => true,
 		);
 
-		$stored_post_type_settings = get_option( 'really_rich_results_post_type_' . $post_type->name, array() );
+		return apply_filters( 'really_rich_results_post_type_defaults', $defaults, $post_type );
+	}
 
-		$post_type_settings = wp_parse_args( $stored_post_type_settings, $defaults );
-
-		return $post_type_settings;
+	/**
+	 * Gets the default schema type for a post type.
+	 *
+	 * @param WP_Post_Type $post_type The post type being checked.
+	 *
+	 * @return string
+	 */
+	private function detect_default_schema_type( $post_type ) {
+		switch ( $post_type->name ) {
+			case 'post':
+				return 'Article';
+			default:
+				return 'WebPage';
+		}
 	}
 
 	/**
