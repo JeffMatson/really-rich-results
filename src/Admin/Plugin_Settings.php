@@ -45,7 +45,10 @@ class Plugin_Settings {
 			),
 		);
 
+		// Register global settings.
 		register_setting( 'really_rich_results', 'really_rich_results_global', $setting_props );
+
+		// Register organization settings.
 		$this->register_org_name_setting();
 		$this->register_org_url_setting();
 		$this->register_org_duns_setting();
@@ -163,9 +166,9 @@ class Plugin_Settings {
 	/**
 	 * Sanitizes same as settings.
 	 *
-	 * @param array $same_as Array of sameAs URLs.
+	 * @param string[] $same_as Array of sameAs URLs.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	public function sanitize_org_same_as( $same_as ) {
 		$sanitized = array();
