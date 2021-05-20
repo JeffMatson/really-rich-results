@@ -300,12 +300,14 @@ class Main {
 	public function build_schema_objects() {
 		$primary_schema_object = $this->build_primary_schema_object();
 
+		// Loop through found posts and build schema objects from them.
 		foreach ( $this->found_posts as $found_post ) {
 			if ( ! $found_post->get_processed_status() ) {
 				$this->schema_objects[] = Factories\Schema::create( $found_post );
 			}
 		}
 
+		// Toss the primary schema object into the list.
 		if ( ! empty( $primary_schema_object ) ) {
 			$this->schema_objects[] = $primary_schema_object;
 		}
@@ -324,6 +326,7 @@ class Main {
 		// Set the primary content.
 		$single->set_primary_content( $data_source );
 
+		// Check for any products that exist on the data source, then build new schema objects from them.
 		$products = $data_source->get_products();
 		if ( ! empty( $products ) ) {
 			foreach ( $products as $product ) {
@@ -339,6 +342,7 @@ class Main {
 				$found_post->set_processed_status( true );
 			}
 
+			// Add secondary items as parts of the main object.
 			if ( ! $found_post->get_processed_status() ) {
 				$schema = Factories\Schema::create( $found_post );
 				$single->add_part( $schema->get_schema() );
