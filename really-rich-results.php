@@ -2,13 +2,13 @@
 /**
  * Main plugin file for bootstrapping Really Rich Results.
  *
- * @link              https://pagely.com
+ * @link              https://github.com/pagely/really-rich-results
  * @since             0.1.0
  * @package           Really_Rich_Results
  *
  * @wordpress-plugin
  * Plugin Name:       Really Rich Results
- * Plugin URI:        https://pagely.com
+ * Plugin URI:        https://github.com/pagely/really-rich-results
  * Description:       Adds JSON-LD output for structured data
  * Version:           0.1.1
  * Author:            JeffMatson, joshuastrebel, Pagely

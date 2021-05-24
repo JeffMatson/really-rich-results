@@ -1,12 +1,11 @@
 {
-  "name": "pagely/really-rich-results",
+  "name": "@pagely/really-rich-results",
   "description": "WordPress plugin to handle JSON-LD schema markup",
   "type": "wordpress-plugin",
   "license": "GPL3",
   "authors": [
     {
-      "name": "Jeff Matson",
-      "email": "jeff.matson@pagely.com"
+      "name": "Jeff Matson"
     }
   ],
   "autoload": {
