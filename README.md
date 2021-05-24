@@ -10,6 +10,10 @@ In addition to a large library of standard patterns that are automatically recog
 
 RRR makes structured data for WordPress really rich, and really easy.
 
+## Installing
+
+Just jump over to the [Releases page](https://github.com/pagely/really-rich-results/releases), download the plugin zip, and install it on your WordPress site.
+
 ## Building
 
 The instructions below are for building from the GitHub repository. If you'd like to try out a pre-packaged version, see the [releases](https://github.com/pagely/really-rich-results/releases).
