@@ -1,6 +1,6 @@
 {
   "name": "@pagely/really-rich-results",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Really Rich Results",
   "main": "assets/src/js/index.js",
   "scripts": {
