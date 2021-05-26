@@ -1,5 +1,5 @@
 {
-  "name": "@pagely/really-rich-results",
+  "name": "pagely/really-rich-results",
   "description": "WordPress plugin to handle JSON-LD schema markup",
   "type": "wordpress-plugin",
   "license": "GPL3",
