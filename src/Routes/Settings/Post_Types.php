@@ -100,12 +100,17 @@ class Post_Types {
 	private function detect_default_schema_type( $post_type ) {
 		switch ( $post_type->name ) {
 			case 'post':
-				return 'Article';
+				$default = 'Article';
+				break;
 			case 'attachment':
-				return 'ImageObject';
+				$default = 'ImageObject';
+				break;
 			default:
-				return 'WebPage';
+				$default = 'WebPage';
+				break;
 		}
+
+		return apply_filters( 'really_rich_results_post_type_default_schema_type', $default, $post_type );
 	}
 
 	/**
