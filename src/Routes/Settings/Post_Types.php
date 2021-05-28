@@ -75,8 +75,6 @@ class Post_Types {
 	private function get_post_type_defaults( $post_type ) {
 		$default_schema_type    = $this->detect_default_schema_type( $post_type );
 		$supported_schema_types = $this->detect_supported_schema_types( $post_type );
-		// TODO: Probably change this hook later.
-		$supported_schema_types = apply_filters( 'really_rich_results_post_type_supports_schema_type', $supported_schema_types, $post_type );
 
 		$defaults = array(
 			'name'        => $post_type->name,
@@ -120,30 +118,33 @@ class Post_Types {
 	private function detect_supported_schema_types( $post_type ) {
 		switch ( $post_type->name ) {
 			case 'post':
-				return array(
+				$post_type_supports = array(
 					'Article',
 					'CreativeWork',
 					'Review',
 					'Thing',
 					'WebPage',
 				);
+				break;
 			case 'page':
-				return array(
+				$post_type_supports = array(
 					'Article',
 					'CreativeWork',
 					'Review',
 					'Thing',
 					'WebPage',
 				);
+				break;
 			case 'attachment':
-				return array(
+				$post_type_supports = array(
 					'CreativeWork',
 					'ImageObject',
 					'MediaObject',
 					'Thing',
 				);
+				break;
 			default:
-				return array(
+				$post_type_supports = array(
 					'Article',
 					'CreativeWork',
 					'ImageObject',
@@ -155,7 +156,10 @@ class Post_Types {
 					'Thing',
 					'WebPage',
 				);
+				break;
 		}
+
+		return apply_filters( 'really_rich_results_post_type_supports', $post_type_supports, $post_type );
 	}
 
 	/**
