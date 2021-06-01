@@ -1,8 +1,8 @@
 import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
-import { Fragment } from '@wordpress/element';
+import { Fragment, useState } from '@wordpress/element';
 import { TextControl, Button, BaseControl, Panel, PanelBody, PanelRow } from '@wordpress/components';
-import { trash, plus } from '@wordpress/icons';
+import { trash, plus, check } from '@wordpress/icons';
 import apiFetch from '@wordpress/api-fetch';
 
 import { globalSettingsStore } from '../../stores/globalSettingsStore';
@@ -48,23 +48,47 @@ const applyWithDispatch = withDispatch( (dispatch) => ({
  */
 const GeneralSettingsTab = (props) => {
 
+    const [saveButtonProps, setSaveButtonProps] = useState({
+        icon: false,
+        isBusy: false,
+        className: 'save-changes',
+        text: 'Save Changes'
+    });
+
     /**
      * Saves global settings.
-     * TODO: Handle state.
-     * TODO: Validation/sanitization.
+     * TODO: Improve save state feedback/report errors.
+     * TODO: Validation/sanitization for better feedback before hitting the API.
      * 
      * @param {Object} globalSettings Settings from the global settings store.
      * 
      * @returns {boolean} True if success.
      */
     const saveSettings = (globalSettings) => {
+        setSaveButtonProps({
+            icon: false,
+            isBusy: true,
+            className: 'save-changes',
+            text: 'Saving'
+        });
+
         apiFetch({
             path: '/really_rich_results/v1/settings/site',
             method: 'POST',
             data: globalSettings
         }).then( (res) => {
-            console.log(res);
+            // TODO: actual real feedback for errors.
+            setSaveButtonProps({
+                icon: check,
+                isBusy: false,
+                className: 'save-changes',
+                text: 'Saved Successfully'
+            });
         });
+    }
+
+    const SaveButton = (props) => {
+        return <Button isBusy={saveButtonProps.isBusy} icon={saveButtonProps.icon} className={saveButtonProps.className} isPrimary onClick={props.onClick}>{saveButtonProps.text}</Button>
     }
 
     return(
@@ -147,7 +171,7 @@ const GeneralSettingsTab = (props) => {
 
             </Panel>
 
-            <Button className="save-changes" isPrimary onClick={() => saveSettings({ ...props.globalSettings })}>Save Changes</Button>
+            <SaveButton onClick={() => saveSettings({ ...props.globalSettings })} />
         </Fragment>
     );
 }
