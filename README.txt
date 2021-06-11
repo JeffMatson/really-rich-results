@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Really Rich Results - JSON-LD Structured Data (Google Rich Results) ===
 Contributors: JeffMatson, joshuastrebel
 Donate link: https://example.com/
 Tags: rich results, schema, structured data, rich snippets, schema.org, json-ld, seo 
