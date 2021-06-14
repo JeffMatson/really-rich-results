@@ -14,24 +14,17 @@ Take advantage of Google's Rich Results feature with Really Rich Results.
 
 == Description ==
 
-Search engines are putting more weight on structured data than ever before. By leveraging JSON-LD schema markup as 
-part of your SEO strategy, a whole world of opportunities arise within Google's Rich Results.
+Search engines are putting more weight on structured data than ever before. By leveraging JSON-LD schema markup as part of your SEO strategy, a whole world of opportunities arise within Google's Rich Results.
 
-Really Rich Results works with your WordPress site's existing content to quickly and accurately generate JSON-LD 
-schema markup with minimal effort required. In addition to generating markup for the primary content on the page, 
-Really Rich Results also detects any additional child elements that are being displayed, such as related content, 
-products, page context, and more.
+Really Rich Results works with your WordPress site's existing content to quickly and accurately generate JSON-LD schema markup with minimal effort required. In addition to generating markup for the primary content on the page, Really Rich Results also detects any additional child elements that are being displayed, such as related content, products, page context, and more.
 
-In addition to a large library of standard patterns that are automatically recognized, Really Rich Results offers 
-limitless customization to fit your unique needs. Whether you're customizing your structured data from within the 
-GUI or by providing your own custom code, Really Rich Results has you covered.
+In addition to a large library of standard patterns that are automatically recognized, Really Rich Results offers limitless customization to fit your unique needs. Whether you're customizing your structured data from within the GUI or by providing your own custom code, Really Rich Results has you covered.
 
 RRR makes structured data for WordPress really rich, and really easy.
 
 = Supported Schema Types =
 
-Really Rich Results features several schema types that can be used as-is, extended, tweaked, or entirely replaced 
-on a granular basis. These types include the following:
+Really Rich Results features several schema types that can be used as-is, extended, tweaked, or entirely replaced on a granular basis. These types include the following:
 
 *    AboutPage
 *    Action
@@ -70,8 +63,7 @@ To contribute, please see the [Really Rich Results repo on GitHub](https://githu
 
 = How do I use Really Rich Results? =
 
-In many scenarios, installing the plugin alone will generate accurate schema markup. After installation, it's recommended 
-to visit the RRR settings page at *Tools* => *R3 Schema*.
+In many scenarios, installing the plugin alone will generate accurate schema markup. After installation, it's recommended to visit the RRR settings page at *Tools* => *R3 Schema*.
 
 Individual post settings can be changed from inside the right panel of the Gutenberg post editor.
 
