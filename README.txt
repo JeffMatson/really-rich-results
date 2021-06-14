@@ -8,8 +8,7 @@ Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
-Really Rich Results quickly and accurately generates JSON-LD structured data schema markup with minimal effort required. 
-Take advantage of Google's Rich Results feature with Really Rich Results.
+Really Rich Results quickly and accurately generates JSON-LD structured data schema markup with minimal effort required. Take advantage of Google's Rich Results feature with Really Rich Results.
 
 == Description ==
 
