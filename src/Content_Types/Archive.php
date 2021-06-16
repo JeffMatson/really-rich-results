@@ -45,6 +45,15 @@ class Archive extends Abstract_Content_Type {
 	}
 
 	/**
+	 * Gets the posts assigned to the archive.
+	 *
+	 * @return WP_Post[]
+	 */
+	public function get_archive_posts() {
+		return $this->posts;
+	}
+
+	/**
 	 * Sets the primary content of the content type.
 	 *
 	 * @param object $primary_content The primary content.
@@ -53,6 +62,15 @@ class Archive extends Abstract_Content_Type {
 	 */
 	public function set_primary_content( $primary_content ) {
 		$this->primary_content = $primary_content;
+	}
+
+	/**
+	 * Gets the primary content assigned to the archive.
+	 *
+	 * @return \Really_Rich_Results\Data_Sources\Abstract_Data_Source
+	 */
+	public function get_primary_content() {
+		return $this->primary_content;
 	}
 
 	/**
