@@ -41,6 +41,15 @@ class Single extends Abstract_Content_Type {
 	}
 
 	/**
+	 * Gets the primary content being used.
+	 *
+	 * @return WP_Post
+	 */
+	public function get_primary_content() {
+		return $this->post;
+	}
+
+	/**
 	 * Holds objects that are meant to be a part of the primary content.
 	 *
 	 * @param mixed $part The part to add.
