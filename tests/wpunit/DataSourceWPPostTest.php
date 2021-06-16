@@ -5,7 +5,7 @@ use Really_Rich_Results\Data_Sources\Generic;
 use Really_Rich_Results\Data_Sources\WP_User;
 use Really_Rich_Results\Factories\Data_Source as Data_Source_Factory;
 
-class WPPostDataSourceTest extends \Codeception\TestCase\WPTestCase
+class DataSourceWPPostTest extends \Codeception\TestCase\WPTestCase
 {
 	/**
 	 * @var \WpunitTester
