@@ -36,7 +36,6 @@ class FactoryDataSourceTest extends \Codeception\TestCase\WPTestCase
 		$user_data_source = \Really_Rich_Results\Factories\Data_Source::create( $user );
 		
 		$this->assertInstanceOf( \Really_Rich_Results\Data_Sources\WP_User::class, $user_data_source);
-
 	}
 
 	public function testCreateDataSourceFromWP_Term() {
