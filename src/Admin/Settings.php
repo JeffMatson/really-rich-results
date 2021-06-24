@@ -24,7 +24,6 @@ class Settings {
 	public function init() {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 	}
 
 	/**
@@ -137,31 +136,5 @@ class Settings {
 	 */
 	public function render_plugin_settings_page() {
 		echo '<div id="root-really-rich-results-settings"></div>';
-	}
-
-	/**
-	 * Adds the post settings meta boxes to the post editor.
-	 *
-	 * @return void
-	 */
-	public function add_meta_boxes() {
-		add_meta_box(
-			'really_rich_results_post_settings',
-			'Rich Results',
-			array( $this, 'render_post_meta_box' ),
-			'post',
-			'side'
-		);
-	}
-
-	/**
-	 * Renders the markup for the post meta box.
-	 *
-	 * @param WP_Post $post The WordPress post object.
-	 *
-	 * @return void
-	 */
-	public function render_post_meta_box( $post ) {
-		echo '<div id="post-root-really-rich-results" data-post-id="' . intval( $post->ID ) . '"></div>';
 	}
 }
