@@ -53,15 +53,15 @@
   },
   "homepage": "https://github.com/pagely/really-rich-results#readme",
   "devDependencies": {
-    "@wordpress/scripts": "^16.0.0",
+    "@wordpress/scripts": "^17.1.0",
     "bestzip": "^2.2.0",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "@wordpress/plugins": "^3.0.0",
-    "immer": "^9.0.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@wordpress/plugins": "^4.0.0",
+    "immer": "^9.0.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "resolutions": {
     "**/**/trim": ">= 0.0.3"
