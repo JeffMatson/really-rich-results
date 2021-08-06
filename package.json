@@ -55,7 +55,9 @@
   "devDependencies": {
     "@wordpress/scripts": "^17.1.0",
     "bestzip": "^2.2.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "sass": "^1.37.5",
+    "sass-loader": "^12.1.0"
   },
   "dependencies": {
     "@wordpress/plugins": "^4.0.0",
