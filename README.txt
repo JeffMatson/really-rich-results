@@ -2,7 +2,7 @@
 Contributors: JeffMatson, joshuastrebel
 Tags: rich results, schema, structured data, rich snippets, schema.org, json-ld, seo 
 Requires at least: 5.6
-Tested up to: 5.7
+Tested up to: 5.9
 Stable tag: trunk
 Requires PHP: 7.0
 License: GPLv3 or later
