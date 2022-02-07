@@ -511,4 +511,14 @@ class WP_Post extends Abstract_Data_Source {
 		return $products;
 	}
 
+	/**
+	 * Little method to parse blocks from post content.
+	 * 
+	 * @return array
+	 */
+	public function get_content_block_data() {
+		$blocks_parsed = parse_blocks( $this->data->post_content );
+		return $blocks_parsed;
+	}
+
 }

@@ -30,6 +30,11 @@ class Schema {
 		return $target;
 	}
 
+	public static function create_and_get_json( $data_source, $target = null ) {
+		$created = self::create( $data_source, $target );
+		return $created->get_json();
+	}
+
 	/**
 	 * Detects the appropriate target based on the data source.
 	 *
